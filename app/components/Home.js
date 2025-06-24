@@ -80,9 +80,12 @@ export default function Home({ adminId, posterId }) {
     password: "",
   };
   useEffect(() => {
-    const timer = setTimeout(() => {
+    if(open){
+  const timer = setTimeout(() => {
       router.push("/signin");
     }, 3000);
+    }
+  
 
     return () => clearTimeout(timer); // cleanup on unmount
   }, [router]);
