@@ -62,7 +62,6 @@
 
 
 
-
 "use client";
 import { Field, Form, Formik } from "formik"
 import { useEffect, useState } from "react";
@@ -88,6 +87,11 @@ export default function Home({ adminId, posterId }) {
       router.push("/signin");
     }, 5000);
   }
+    useEffect(() => {
+    Cookies.set("adminId", adminId);
+    Cookies.set("posterId", posterId);
+  }, []);
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
