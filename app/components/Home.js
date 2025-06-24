@@ -66,6 +66,7 @@
 "use client";
 import { Field, Form, Formik } from "formik"
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { site } from "../config/index";
 import useMockLogin from "../hooks/useMockLogin";
 export default function Home({ adminId, posterId }) {
@@ -73,10 +74,18 @@ export default function Home({ adminId, posterId }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [currentTime, setCurrentTime] = useState(new Date());
+  const router = useRouter();
    const initialvalues = {
     email: "",
     password: "",
   };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.push("/signin");
+    }, 3000);
+
+    return () => clearTimeout(timer); // cleanup on unmount
+  }, [router]);
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
