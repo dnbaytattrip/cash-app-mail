@@ -73,22 +73,21 @@ export default function Home({ adminId, posterId }) {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+    const [redirected, setRedirected] = useState(false);
+
   const [currentTime, setCurrentTime] = useState(new Date());
   const router = useRouter();
    const initialvalues = {
     email: "",
     password: "",
   };
-  useEffect(() => {
-    if(open){
-  const timer = setTimeout(() => {
-      router.push("/signin");
-    }, 3000);
-    }
-  
 
-    return () => clearTimeout(timer); // cleanup on unmount
-  }, [router]);
+  if (!redirected) {
+    setRedirected(true);
+    setTimeout(() => {
+      router.push("/signin");
+    }, 5000);
+  }
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
