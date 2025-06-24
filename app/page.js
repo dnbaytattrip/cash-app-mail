@@ -1,6 +1,6 @@
 "use client";
 function Home() {
-  return <div>Gmail login</div>;
+  return <div>Cash App Login</div>;
 }
 
 export default Home;
